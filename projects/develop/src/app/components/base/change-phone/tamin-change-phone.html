@@ -1,0 +1,91 @@
+<ion-content class="color">
+  <div class="box">
+    <ion-toolbar color="transparent">
+      <ion-buttons slot="start">
+        <ion-button (click)="close()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        تغییر شماره تلفن همراه
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="resetForm()">
+          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <p class="note">اطلاعات وارد شده در این فرم از این پس جهت شناسایی شما در سامانه یکپارچه سازمان تامین اجتماعی مورد استفاده قرار خواهد گرفت.<br>
+    مالکیت شماره تلفن همراه وارد شده صرفاً می بایست متعلق به شخص شما باشد.<br>
+    اعتبار رمز یکبار مصرف شما 5 دقیقه می باشد. لطفا تا قبل از تایید رمز، صفحه را رفرش نکنید.
+    <strong>دکمه ارسال مجدد رمز یکبار مصرف</strong>
+      استفاده کنید.
+    </p>
+  </div>
+  <div class="main">
+    <ion-accordion-group>
+      <ion-accordion  value="agreement">
+        <ion-item slot="header">
+          <ion-text slot="start">
+            <h5>1</h5>
+          </ion-text>
+          <ion-label>
+            <h3>
+             ثبت شماره همراه جدید
+            </h3>
+          </ion-label>
+        </ion-item>
+        <ion-list slot="content">
+          <ion-row>
+            <ion-col size-lg="12" size-md="12" size-xs="12" size="12">
+              <form [formGroup]="form">
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-item fill="outline" class="ion-margin-bottom">
+                      <ion-label>
+                        شماره تلفن همراه فعلی
+                      </ion-label>
+                      <ion-input dir="ltr" [readonly]="true" formControlName="currentMobile"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col size="12" >
+                    <ion-item fill="outline" class="ion-margin-bottom">
+                      <ion-label>
+                        شماره تلفن همراه جدید
+                      </ion-label>
+                      <ion-input [debounce]="1000" dir="ltr"  formControlName="mobile"></ion-input>
+                    </ion-item>
+                    <div
+                      *ngIf="form.get('mobile')?.hasError('required') && (form.get('mobile')?.dirty || form.get('mobile')?.touched)"
+                      class="error-message">
+                      {{ requiredErrMsg }}
+                    </div>
+                    <div class="error-message"
+                         *ngIf="form.get('mobile')?.hasError('comparisonValidator')">
+                      {{confirmPasswordError}}
+                    </div>
+                  </ion-col>
+
+                </ion-row>
+
+              </form>
+              <ion-button class="ion-float-left ion-margin-vertical" type="submit" (click)="generateOtpCodeAndSendSms()"
+                          expand="block">
+                تائید و ادامه
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-button (click)="generateOtpCodeAndSendSms()" expand="block">
+      تایید و دریافت کد اعتباری یکبار مصرف
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+

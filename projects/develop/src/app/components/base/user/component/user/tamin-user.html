@@ -1,0 +1,42 @@
+<ion-tabs>
+  <ion-tab-bar slot="top">
+    <ion-toolbar *ngIf="isUserLoggedIn">
+      <ion-buttons slot="end">
+        <ion-menu-button class="border"></ion-menu-button>
+      </ion-buttons>
+      <ion-chip slot="start" (click)="openUserInfoPopover($event)" class="ion-margin-start ion-padding-horizontal"
+                [ngStyle]="currentUser ? {'background-color': color} : null ">
+        <ion-avatar *ngIf="currentUser">
+          <img *ngIf="!imgUser || imgUser == 'null'"
+               src="assets/avatar/avatar.svg"/>
+          <img *ngIf="imgUser && imgUser !=='null'" [src]="imgUser"/>
+        </ion-avatar>
+        <ion-label>
+          <h3 *ngIf="!currentUser">
+            <ion-skeleton-text [animated]="true" style="width: 70%"></ion-skeleton-text>
+          </h3>
+          <h3 *ngIf="currentUser">{{ currentUser?.firstName }} {{ currentUser?.lastName }}</h3>
+        </ion-label>
+      </ion-chip>
+      <ion-buttons slot="primary">
+        <ion-button (click)="logOut()">
+          <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="!isUserLoggedIn">
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-item (click)="loginWithAccount()" class="ion-no-padding" [button]="true">
+        <div class="avatar size ion-margin-horizontal" [ngStyle]="{background: color}">
+          <ion-icon slot="start" name="log-in-outline"></ion-icon>
+        </div>
+        <ion-label>
+          <p class="psmall ion-text-wrap ion-margin-end">وارد حساب کاربری شوید</p>
+<!--          <h3>ورود به {{config.systemName}}</h3>-->
+        </ion-label>
+      </ion-item>
+    </ion-toolbar>
+  </ion-tab-bar>
+</ion-tabs>

@@ -1,0 +1,152 @@
+
+.rwd-table {
+  margin: auto;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.rwd-table tr:first-child {
+  border-top: none;
+  background: var(--ion-color-light-tint);
+  line-height: 3;
+  font-size: 14px;
+}
+
+.rwd-table tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f9fc;
+  font-size: 14px;
+}
+
+.rwd-table tr:nth-child(odd):not(:first-child) {
+  background-color: #ebf3f9;
+}
+
+.rwd-table th {
+  display: none;
+}
+
+.rwd-table td {
+  display: block;
+}
+
+
+
+.rwd-table td:before {
+  content: attr(data-label);
+  display: inline-block;
+}
+
+.rwd-table th,
+.rwd-table td {
+  text-align: center;
+}
+
+.rwd-table {
+  overflow: hidden;
+}
+
+.rwd-table tr {
+  border-bottom: 1px solid var(--ion-color-medium-tint);
+  border-left: none;
+  border-right: none;
+}
+
+.rwd-table th,
+.rwd-table td {
+  padding: .5em 1em;
+}
+@media screen and (max-width: 601px) {
+  .rwd-table tr:nth-child(2) {
+    border-top: none;
+  }
+  .rwd-table th,
+.rwd-table td {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.rwd-table th:last-child,
+.rwd-table td:last-child {
+  border: none;
+}
+.rwd-table td:before {
+  content: attr(data-label);
+  float: right;
+}
+
+}
+@media screen and (min-width: 600px) {
+  .rwd-table tr:hover:not(:first-child) {
+    background-color: #d8e7f3;
+  }
+  .rwd-table td:before {
+    display: none;
+  }
+  .rwd-table th,
+  .rwd-table td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  .rwd-table th:first-child,
+  .rwd-table td:first-child {
+    padding-left: 0;
+  }
+  .rwd-table th:last-child,
+  .rwd-table td:last-child {
+    padding-right: 0;
+  }
+/*   .rwd-table th,
+  .rwd-table td {
+    padding: 1em !important;
+  } */
+}
+
+.notif-message{
+  text-align: center;
+  padding: 16px;
+  ion-text{
+    display: block;
+  }
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--ion-color-light-tint);
+}
+
+ion-input.custom {
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-dark-tint);
+  --placeholder-color: var(--ion-color-medium);
+  --placeholder-opacity: .8;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  margin-right: 8px;
+  width: 95%;
+  border-radius: 25px;
+}
+
+/* ion-item.custom {
+  --min-height: 16px;
+} */
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+@media(max-width: 600px) {
+  .flex{
+    flex-direction: column;
+  }
+}
+
+.width{
+  width: 100% !important;
+}

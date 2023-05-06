@@ -1,0 +1,7 @@
+
+<ion-item (click)="onSort(data.sortParams.property, data.sortParams.direction)" button [detail]="true" *ngFor="let data of data">
+  <ion-label>
+      {{data.sortTitle}}
+  </ion-label>
+</ion-item>
+

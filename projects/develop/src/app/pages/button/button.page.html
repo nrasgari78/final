@@ -1,0 +1,65 @@
+<ion-header  dir="ltr" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>button</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xl="8" size-lg="8" size-md="6" size-xs="12" size="12">
+        <ion-row>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <div>
+              <tamin-button label="ورود به سامانه" color="primary" class="ion-margin"></tamin-button>
+              <tamin-button label="ثبت نام" color="success" class="ion-margin" ></tamin-button>
+              <tamin-button label="حذف" color="danger" class="ion-margin"></tamin-button>
+              <tamin-button label="کارفرمایان" color="warning" class="ion-margin"></tamin-button>
+            </div>
+            <app-code class="relative" [htmlCode]="exampleOne" [tsCode]=""  (copyCode)="copy(exampleOne)"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <div>
+              <tamin-button label="مستمری بگیران" color="primary"  class="ion-margin"></tamin-button>
+              <tamin-button label="حکم مستمری" color="secondary" fill="clear" class="ion-margin"></tamin-button>
+              <tamin-button label="فیش حقوق" color="tertiary" fill="outline" class="ion-margin"></tamin-button>
+              <tamin-button label="درخواست تسهیلات" color="primary" fill="solid" class="ion-margin"></tamin-button>
+            </div>
+
+            <app-code class="relative" [htmlCode]="exampleTwo" [tsCode]=""  (copyCode)="copy(exampleTwo)"></app-code>
+          </ion-col>
+
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+              <tamin-button label="فعال" color="primary" class="ion-margin"></tamin-button>
+            <div>
+              <tamin-button label="غیرفعال" color="primary" [disabled]="true" class="ion-margin"></tamin-button>
+            </div>
+            <app-code class="relative" [htmlCode]="exampleThree" [tsCode]=""  (copyCode)="copy(exampleThree)"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+              <tamin-button label="تایید نهایی" color="success" expand="full"></tamin-button>
+              <tamin-button label="حذف" color="danger" expand="block"></tamin-button>
+            <app-code class="relative" [htmlCode]="exampleFour" [tsCode]=""  (copyCode)="copy(exampleFour)"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <div>
+              <tamin-button label="خدمات سابقه" color="light" size="large" class="ion-margin" ></tamin-button>
+              <tamin-button label="خدمات بیمه ای" color="primary" class="ion-margin"></tamin-button>
+              <tamin-button label="خدمات نام نویسی" color="dark" size="small" class="ion-margin"></tamin-button>
+            </div>
+            <app-code class="relative" [htmlCode]="exampleFive" [tsCode]=""  (copyCode)="copy(exampleFive)"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <div>
+              <tamin-button label="افزودن" iconName="add" iconColor="primary" class="ion-margin" ></tamin-button>
+              <tamin-button iconName="create-outline" iconColor="success" iconSlot="icon-only" class="ion-margin"></tamin-button>
+              <tamin-button label="حذف" color="danger" iconName="trash-outline" iconSlot="end" class="ion-margin"></tamin-button>
+            </div>
+            <app-code class="relative" [htmlCode]="exampleSix" [tsCode]=""  (copyCode)="copy(exampleSix)"></app-code>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,28 @@
+
+<div class="flex" *ngIf="totalPages !== 1">
+  <div class="pagination" dir="rtl" >
+    <a [class.disabled]="currentPage == 1" *ngIf="totalPages> 3"
+       (click)="selectPage(1, $event)">❮❮
+    </a>
+
+    <a (click)="selectPage(currentPage - 1, $event)" [class.disabled]="currentPage == 1" href=""
+       title="نمایش صفحه قبل">❮</a>
+    <a (click)="cancelEvent($event)" *ngIf="(currentPage - range) > 1" href="">...</a>
+    <ng-container *ngFor="let page of pages | async">
+      <a href="javascript:void(0)" (click)="selectPage(page, $event)" [class.active]="page == currentPage">
+        {{page}}
+      </a>
+    </ng-container>
+    <a (click)="cancelEvent($event)" *ngIf="(currentPage + range) < totalPages" href="">...</a>
+    <a (click)="selectPage(currentPage + 1, $event)" class="page-link" href="" title="نمایش صفحه بعد"
+       [class.disabled]="currentPage == totalPages">❯</a>
+
+    <a [class.disabled]="currentPage == totalPages" *ngIf="totalPages> 3"
+       (click)="selectPage(totalPages, $event)">❯❯
+    </a>
+  </div>
+    <ion-text class="ion-padding-end" color="primary"> صفحه  {{currentPage}} از {{math.ceil(size/limit)}}</ion-text>
+</div>
+
+
+

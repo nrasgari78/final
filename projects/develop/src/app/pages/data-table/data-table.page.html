@@ -1,0 +1,89 @@
+<ion-card class="ion-margin">
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="!showFunnel">{{config.tableTitle}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showFunnel = !showFunnel">
+        <ion-icon slot="icon-only" name="funnel-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="reset()">
+        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="openMenuPopover($event)">
+        <ion-icon slot="icon-only" name="apps"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ng-container *ngIf="showFunnel">
+      <ion-input class="custom" *ngIf="!config.filterByProperty.property" clearInput="true"
+                 placeholder="فیلتر براساس داده‌های دریافت شده" [(ngModel)]="searchText"></ion-input>
+      <ion-input class="custom" *ngIf="config.filterByProperty.property" clearInput="true" placeholder="فیلتر"
+                 (ionChange)="search($event)" [debounce]="1000"></ion-input>
+    </ng-container>
+
+  </ion-toolbar>
+
+  <ng-container *ngIf="config['rowData'].length == 0 && !config.errorMessage">
+    <div class="notif-message">
+      <img src="./assets/cloud-refresh.png">
+      <ion-text color="primary">در حال دریافت اطلاعات</ion-text>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="config['rowData'].data?.total == 0 && !config.errorMessage">
+    <div class="notif-message">
+      <img src="./assets/empity.png">
+      <ion-text color="warning">اطلاعاتی برای نمایش وجود ندارد.</ion-text>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="config.errorMessage">
+    <div class="notif-message">
+      <img src="./assets/error.png">
+      <ion-text color="danger">{{ config.errorMessage }}</ion-text>
+    </div>
+  </ng-container>
+
+  <table class="rwd-table"
+         *ngIf=" !config.errorMessage && ( config['rowData']?.data?.list | taminSearchFilter: searchText) as result">
+    <tbody>
+    <tr *ngIf="result.length">
+      <th *ngFor="let col of config.dataColumn" scope="col">
+        {{col.viewValue}}
+        <ion-icon *ngIf="col.value === propertyName"
+                  [name]="direction === 'ASC' ? 'caret-up-outline' : 'caret-down-outline' " size="small"></ion-icon>
+      </th>
+    </tr>
+    <tr [ngClass]="config.button ?' ion-activatable ripple-parent' : ''" *ngFor="let item of result; let i = index"
+        (click)="config.button ? itemClicked.emit(item) : ''">
+      <ng-container>
+        <td *ngFor="let col of config.dataColumn; let index = index" [attr.data-label]="col.viewValue">
+          <ng-container>
+            <ng-container
+              *ngTemplateOutlet="listViewTemplate; context: {$implicit: item, colName: col, rowIndex: i }"></ng-container>
+            <ion-ripple-effect *ngIf="config.button"></ion-ripple-effect>
+          </ng-container>
+        </td>
+      </ng-container>
+
+    </tr>
+    <tr *ngIf="showFunnel && !result.length && !config.filterByProperty.property">
+      <td>
+        <div class="notif-message">
+          <img src="./assets/undefined.png">
+          <ion-text>نتیجه‌ای برای فیلتر شما از بین داده‌های بارگذاری شده در جدول یافت نشد</ion-text>
+        </div>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+  <div *ngIf="config['rowData']?.data?.list.length && config.showPaging && !config.errorMessage">
+  <tamin-pagination [visibleRangeLength]="visibleRangeLength" [offset]="offset" [limit]="config.limit"
+                    [size]="config['rowData'].data.total" (changePage)="loadPage($event)"></tamin-pagination>
+  </div>
+
+
+</ion-card>

@@ -1,0 +1,18 @@
+.col{
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 25px;
+
+  &:nth-child(even) {
+  border: 2px solid lighten(#F1F1F1, 2%)
+}
+
+  &:nth-child(odd) {
+    border: 2px solid darken(#F1F1F1, 2%)
+  }
+
+}
+
+.relative {
+  position: relative;
+}

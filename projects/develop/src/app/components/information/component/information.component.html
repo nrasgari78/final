@@ -1,0 +1,34 @@
+<div id="information-timeline" *ngIf="dataInfo.length>0">
+  <ion-card>
+    <ion-item [color]=color>
+      <ion-label>
+        <h3>
+          {{header}}
+        </h3>
+      </ion-label>
+      <ion-icon slot="end" name="information-circle-outline"></ion-icon>
+    </ion-item>
+    <ion-card-content>
+      <div class="timeline">
+        <div class="item">
+          <ng-container *ngFor="let item of dataInfo;let i=index">
+            <div class="number">
+              {{i + 1}}
+            </div>
+            <div class="info">
+              <ng-container *ngIf="item.title">
+              <ion-text color="secondary" >{{item.title}}</ion-text></ng-container>
+              <ng-container *ngIf="item.description">
+              <p>{{item.description}}</p></ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ion-card-content>
+    <ng-content></ng-content>
+  </ion-card>
+</div>
+
+
+<!--<tamin-information [data]="[{ title:'عنوان 1', value :'تست 1'},{title:'عنوان 2',description:'تست 2'},{title:'عنوان 3',description:'تست 3'}]"-->
+<!--                   [key]="'value'"  [header]="'عنوان تستی'" [color]="'dark'"></tamin-information>-->

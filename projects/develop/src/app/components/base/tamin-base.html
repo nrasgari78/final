@@ -1,0 +1,75 @@
+<ion-split-pane contentId="main-content">
+  <ion-menu content-id="main-content">
+    <ion-content>
+      <ion-list>
+        <ion-item lines="none">
+          <div class="logo">
+            <img width="100px" src="./assets/logoName.svg"/>
+          </div>
+        </ion-item>
+        <ion-searchbar *ngIf="isUserLoggedIn" class="ion-padding" placeholder="جستجو" [(ngModel)]="searchText">
+        </ion-searchbar>
+      <ng-container *ngIf=" isUserLoggedIn && (config.menuData | taminSearchFilter: searchText) as result ">
+        <ion-accordion-group #accordionGroup>
+          <ion-accordion *ngFor="let firstItems of result" [toggleIcon]="removeIcon(firstItems)">
+            <ion-item button="true" slot="header" lines="none" (click)="clickItem(firstItems)"
+                      routerLinkActive="selected">
+              <ion-icon slot="start" [name]="firstItems.icon ? firstItems.icon : 'link-outline'"></ion-icon>
+              <ion-label>{{firstItems.caption}}</ion-label>
+            </ion-item>
+            <ion-list slot="content" class="ion-no-padding ion-padding-start color"
+                      *ngFor="let items of firstItems.items">
+              <ion-item [routerLink]="items.url" routerLinkActive="selected" color="transparent" class="padding-right"
+                        (isActiveChange)="onRouterLinkActive($event)"
+                        lines="none">
+                <ion-label>{{items.caption}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+        <div class="notif-message" *ngIf="!result.length">
+          <img src="./assets/undefined.png">
+          <ion-text>نتیجه‌ای یافت نشد</ion-text>
+        </div>
+      </ng-container>
+      </ion-list>
+
+      <ion-list class="top-padding" (click)="closeAccordion()">
+        <ion-item button="true" lines="none" [routerLink]="'/folder'" routerLinkActive="selected">
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-label>صفحه نخست</ion-label>
+        </ion-item>
+        <ion-item button="true" lines="none" [routerLink]="" routerLinkActive="selected">
+          <ion-icon slot="start" name="settings-outline"></ion-icon>
+          <ion-label>تنظیمات</ion-label>
+        </ion-item>
+        <ion-item (click)="crmUrl()" [button]="true" detail="false" lines="none">
+          <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+          <ion-label>
+            <h3>
+              سامانه ارتباطات و نظارت مردمی
+            </h3>
+          </ion-label>
+        </ion-item>
+        <ion-item (click)="webShare()" routerLinkActive="selected" [button]="true" detail="false" lines="none">
+          <ion-icon slot="start" name="share-social-outline"></ion-icon>
+          <ion-label>
+            <h3>
+              اشتراک گذاری
+            </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <ion-footer *ngIf="isUserLoggedIn">
+      <p class="footer-font ion-padding-horizontal">
+        <ion-text color="medium">تمامی حقوق این اپلیکیشن متعلق به سازمان تأمین اجتماعی می‌باشد. | طرح و اجرا: شرکت
+          مشاور مدیریت و خدمات ماشینی تأمین
+        </ion-text>
+      </p>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="main-content">
+    <tamin-user></tamin-user>
+  </ion-router-outlet>
+</ion-split-pane>

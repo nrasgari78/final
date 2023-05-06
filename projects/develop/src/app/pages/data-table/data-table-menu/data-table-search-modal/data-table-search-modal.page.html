@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{searchModalData.searchModalTitle}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="form.reset()">
+        <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+          <form [formGroup]="form">
+            <div class="ion-padding">
+              <ng-container *ngIf="searchModalData.inputTexts?.length">
+                <ion-item fill="outline" class="ion-margin-bottom" *ngFor="let field of searchModalData.inputTexts">
+                  <ion-label>
+                    {{field.displayName}}
+                  </ion-label>
+                  <ion-input dir="field.dir" type="field.type" [formControlName]="field.property"></ion-input>
+                </ion-item>
+              </ng-container>
+
+
+                <ion-list *ngIf="searchModalData.selectOptions && searchModalData.selectOptions?.label">
+                  <ion-item fill="outline">
+                    <ion-label>
+                      {{searchModalData.selectOptions.label}}
+                    </ion-label>
+                    <ion-select formControlName="option" okText="انتخاب" cancelText="بستن">
+                      <ion-select-option *ngFor="let type of searchModalData.selectOptions.data, let i = index"
+                                         [value]= type[searchModalData.selectOptions.value]>{{type[searchModalData.selectOptions.key]}}</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+
+            </div>
+          </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-button (click)="search()" expand="block" [disabled]="!form.valid">
+      جستجو
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

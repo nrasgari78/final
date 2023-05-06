@@ -1,0 +1,21 @@
+
+.relative {
+  position: relative;
+}
+.icon{
+  cursor: pointer;
+
+}
+ion-input.custom {
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-dark-tint);
+  --placeholder-color: var(--ion-color-medium);
+  --placeholder-opacity: .8;
+  --placeholder-font-size: 30px;
+  --padding-end: 16px;
+  --padding-start: 16px;
+  margin-right: 8px;
+  width: 95%;
+  border-radius: 25px;
+  margin-bottom: 20px;
+}

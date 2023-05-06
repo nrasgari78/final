@@ -1,0 +1,21 @@
+<ion-item [dir]="dir" [fill]="fill" [color]="color" [disabled]="disabled"
+          [button]="button" [detail]="detail" [lines]="lines">
+
+  <ion-avatar *ngIf="avatarSrc" [slot]="avatarSlot">
+    <img [src]="avatarSrc" [alt]="avatarAlt"/>
+  </ion-avatar>
+
+  <ion-thumbnail *ngIf="thumbnailSrc" [slot]="thumbnailSlot">
+    <img [src]="thumbnailSrc"/>
+  </ion-thumbnail>
+
+  <ion-badge *ngIf="badgeLabel" [color]="badgeColor" [slot]="badgeSlot" >{{badgeLabel}}</ion-badge>
+  <ion-icon *ngIf="iconName" [name]="iconName" [size]="iconSize" [color]="iconColor" [slot]="iconSlot"></ion-icon>
+  <ion-label [color]="labelColor" class="ion-text-wrap">
+    <p>{{ !!label ? label : ' برچسب درج نشده است'}}</p>
+    <h3>{{ !!title ? title : ' عنوانی درج نشده است' }}</h3>
+  </ion-label>
+</ion-item>
+
+
+

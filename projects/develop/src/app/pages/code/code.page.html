@@ -1,0 +1,19 @@
+<ion-segment (ionChange)="isHtml = !isHtml;" value="example.component.html">
+  <ion-segment-button value="example.component.ts" [disabled]="!tsCode">
+    <ion-label class="ion-text-lowercase">example.component.ts</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="example.component.html">
+    <ion-label class="ion-text-lowercase">example.component.html</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ng-container *ngIf="!isHtml">
+  <tamin-chip [iconName]="changeName ? 'copy'  : 'checkmark-done-outline'" (click)="copy('ts')" class="icon"
+              color="light" label="کپی" [outline]="true"></tamin-chip>
+  <pre class="highlight" dir="ltr"><code [highlight]="tsCode"></code></pre>
+</ng-container>
+<ng-container *ngIf="isHtml">
+  <tamin-chip [iconName]="changeName ? 'copy'  : 'checkmark-done-outline'" (click)="copy('html')" class="icon"
+              color="light" label="کپی" [outline]="true"></tamin-chip>
+  <pre class="highlight" dir="ltr"><code [highlight]="htmlCode"></code></pre>
+</ng-container>
+

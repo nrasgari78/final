@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{chart.title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div dir="ltr" style="height:90%;  " class="ion-margin">
+    <div style="height: 100%;" echarts [options]="option"></div>
+  </div>
+</ion-content>

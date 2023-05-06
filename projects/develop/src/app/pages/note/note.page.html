@@ -1,0 +1,73 @@
+<ion-header dir="ltr" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Data Table</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <tamin-data-table (loadData)="loadData($event)"
+                    [configuration]="configuration"
+                    (itemClicked)="selectedItem($event)"
+                    [visibleRangeLength]="2"
+  >
+    <tamin-data-table-row *taminRow="let item; let colName=colName; let rowIndex =rowIndex ">
+      <tamin-data-table-item type="text" [col]="colName" [value]="item.subType.typeDesc"
+                             [displayCol]="'subType.typeDesc'">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item [col]="colName" type="popover" [value]="item.type.typeDesc"
+                             [displayCol]="'type.typeDesc'">
+      </tamin-data-table-item>
+
+
+      <tamin-data-table-item [col]="colName" type="action" [displayCol]="'action'"
+                             [disabled]="item.title === 'پاکستان' " (action)="selectedItem(item)">
+      </tamin-data-table-item>
+
+
+      <tamin-data-table-item [col]="colName" type="date" [displayCol]="'date'" [value]="item.receiveDate">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item [col]="colName" type="icon" [displayCol]="'seen'"
+                             [value]="item.seen ? 'checkmark-done-outline' : 'checkmark-outline'"
+                             [color]="item.seen ? 'success' : 'danger'">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item [col]="colName" type="progress" [color]="'primary'" [displayCol]="'index'"
+                             [value]="rowIndex + 1">
+      </tamin-data-table-item>
+    </tamin-data-table-row>
+  </tamin-data-table>
+
+  <tamin-data-table  [visibleRangeLength]="5" (loadData)="loadDataRequest($event)" [configuration]="config" (itemClicked)="selectedItemBtn($event)">
+    <tamin-data-table-row *taminRow="let item; let colName=colName">
+      <tamin-data-table-item type="text" [col]="colName" [value]="item.refCode"
+                             [displayCol]="'refCode'">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item [col]="colName" type="text" [value]="item.title"
+                             [displayCol]="'title'">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item [col]="colName" type="text" [value]="item.id"
+                             [displayCol]="'id'">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item [col]="colName" type="date" [value]="item.lastModificationTime"
+                             [displayCol]="'lastModificationTime'">
+      </tamin-data-table-item>
+
+      <tamin-data-table-item type="badge" [col]="colName" [color]="setColor(item) " [value]="item.status?.requestDesc  "
+                              [displayCol]="'status.requestDesc'">
+      </tamin-data-table-item>
+    </tamin-data-table-row>
+  </tamin-data-table>
+
+  <div style="width: 70%; margin: 0 auto">
+    <app-code  class="relative" [htmlCode]="htmlCode" [tsCode]="tsCode" (copyCode)="copy($event, htmlCode, tsCode )" ></app-code>
+  </div>
+
+</ion-content>
+
+
+

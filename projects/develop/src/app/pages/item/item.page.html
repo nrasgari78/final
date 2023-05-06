@@ -1,0 +1,78 @@
+<ion-header  dir="ltr" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xl="8" size-lg="10" size-md="12" size-xs="12" size="12">
+        <ion-row>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item *ngFor="let item of datas, let i=index" [title]="item['itemTitle']"
+                        [label]="item['itemLabel']" [dir]="item['itemDirection']" [color]="item['itemColor']">
+            </tamin-item>
+            <app-code class="relative" [htmlCode]="exampleOne" [tsCode]="tsFistExample" (copyCode)="copy($event, exampleOne, tsFistExample)"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item title="صدور گواهی حقوق" label="درخواست گواهی" fill="outline"
+                        lines="none"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleTwo" [tsCode]="" (copyCode)="copy($event, exampleTwo, '')"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="تاریخ پیگیری" title="شماره پیگیری" lines="full"></tamin-item>
+            <tamin-item label="درخواست تقسیط" title="مدیریت بدهی" lines="full"></tamin-item>
+            <tamin-item label="بازنشستگی" title="برقراری مستمری"></tamin-item>
+            <tamin-item label="سامانه متمرکز" title="پرتال جامع"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleThree" [tsCode]="" (copyCode)="copy($event, exampleThree, '')"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="استعلام شماره حساب" title="اعلام شماره حساب بانکی" lines="none"></tamin-item>
+            <tamin-item label="اعلام سوابق" title="سوابق تلفیقی" lines="none"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleFour" [tsCode]="" (copyCode)="copy($event, exampleFour, '')"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="کارفرمایان" title="خدمات کارفرمایان" [detail]="true" [button]="true"
+                        color="light"></tamin-item>
+            <tamin-item label="بیمه شده" title="ویرایش اطلاعات" [detail]="true" [disabled]="true"
+                        color="light"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleFive" [tsCode]="" (copyCode)="copy($event, exampleFive, '')"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="اطلاعات هویتی" title="نام و نام خانوادگی" avatarSrc='/assets/avatar/avatar.svg'
+                        color="primary"></tamin-item>
+            <tamin-item label="اطلاعات هویتی" title="نام و نام خانوادگی" avatarSrc='/assets/avatar/avatar.svg'
+                        avatarSlot="end"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleSix" [tsCode]="" (copyCode)="copy($event, exampleSix, '')"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="بیمه اختیاری" title="بیمه مشاغل آزاد" thumbnailSrc='/assets/img/thumbnail.svg'
+                        color="warning"></tamin-item>
+            <tamin-item label="بیمه اختیاری" title="بیمه زنان خانه دار" thumbnailSrc='/assets/img/thumbnail.svg'
+                        thumbnailSlot="end"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleSeven" [tsCode]="" (copyCode)="copy($event, exampleSeven, '')"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item *ngFor="let item of data, let i=index" [label]="item['itemLabel']" [title]="item['itemTitle']"
+                        [badgeLabel]="item['badgeLabel']" [badgeColor]="item['badgeColor']" [badgeSlot]="item['badgeSlot']">
+            </tamin-item>
+            <app-code class="relative" [htmlCode]="exampleEight" [tsCode]="tsSecondExample" (copyCode)="copy($event, exampleEight, tsSecondExample)"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="جدید" title="نسخه جدید" iconName="add" iconColor="primary"></tamin-item>
+            <tamin-item label="سازمان تامین اجتماعی" title="شماره شعبه" iconName="home-outline"
+                        iconSlot="end"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleNine" [tsCode]="" (copyCode)="copy($event, exampleNine, '' )"></app-code>
+          </ion-col>
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="استعلام شماره حساب" title=""></tamin-item>
+            <tamin-item label="" title="سوابق تلفیقی"></tamin-item>
+            <app-code class="relative" [htmlCode]="exampleTen" [tsCode]="" (copyCode)="copy($event, exampleTen, '' )"></app-code>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

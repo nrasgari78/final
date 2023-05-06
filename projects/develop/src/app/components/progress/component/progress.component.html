@@ -1,0 +1,23 @@
+
+<ion-content >
+  <div style="padding: 20px" >
+  <ion-progress-bar [value]="progress/len" ></ion-progress-bar>
+    <span  [style.right]="rightClass()">{{calculate()}}</span>
+<!--    <span style="position: absolute; top:10px;" [ngStyle]="{'right': progress/len + '%'}">{{calculate()}}</span>-->
+
+  </div>
+</ion-content>
+
+<!--this.restServices.getForkJoin(this.sources).subscribe({-->
+<!--next(value) {-->
+<!--},-->
+<!--  });-->
+
+
+<!--sources :Observable<any>[]=[-->
+<!--  this.restfork.getAllForkJoin('https://eservices.tamin.ir/api/annقصثقصثent/to-user'),-->
+<!--  this.restfork.getAllForkJoin('https://eservices.tamin.ir/api/announcement/to-user'),-->
+<!--  this.restfork.getAllForkJoin('https://eservices.tamin.ir/api/announcement/to-user'),-->
+<!--  this.restfork.getAllForkJoin('https://eservices.tamin.ir/api/announcement/to-user'),-->
+<!--  this.restfork.getAllForkJoin('https://eservices.tamin.ir/api/announcement/to-user'),-->
+<!--  ]-->

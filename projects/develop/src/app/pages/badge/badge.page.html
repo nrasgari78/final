@@ -1,0 +1,51 @@
+<ion-header dir="ltr" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>badge</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xl="8" size-lg="8" size-md="6" size-xs="12" size="12">
+        <ion-row>
+
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <div>
+              <tamin-badge label="بیمه شده" color="primary" class="ion-margin"></tamin-badge>
+              <tamin-badge label=" جامعه متخصصان" color="light" class="ion-margin"></tamin-badge>
+              <tamin-badge label="اخطار" color="warning" class="ion-margin"></tamin-badge>
+              <tamin-badge label="اتمام" color="dark" class="ion-margin"></tamin-badge>
+            </div>
+            <app-code class="relative" [htmlCode]="exampleOne" [tsCode]="" (copyCode)="copy(exampleOne)"></app-code>
+          </ion-col>
+
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-item label="خدمات کارفرما" title="شماره کارگاه" badgeLabel="3070" badgeColor="success">
+            </tamin-item>
+            <app-code class="relative" [htmlCode]="exampleTwo"  [tsCode]="" (copyCode)="copy(exampleTwo)" ></app-code>
+          </ion-col>
+
+          <ion-col size-xl="12" size-lg="12" size-md="12" size-xs="12" size="12">
+            <tamin-card title="سامانه خدمات غیرحضوری" subtitle="این سامانه چیست؟">
+              <p card-content>با توجه به گسترش خدمات غیر حضوری سازمان تامین اجتماعی، این سامانه تمامی سرویس های موجود و
+                همچنین خدمات غیر حضوری جدید سازمان را در یک درگاه مجتمع و یکپارچه در خود جای داده است.
+              </p>
+              <tamin-item label="پرتال جامع" title="سامانه متمرکز" badgeLabel="3070" badgeColor="secondary"
+                          badgeSlot="end">
+              </tamin-item>
+            </tamin-card>
+            <app-code class="relative" [htmlCode]="exampleThree" [tsCode]=""  (copyCode)="copy(exampleThree)"></app-code>
+          </ion-col>
+          <ion-col size="12">
+              <tamin-item  *ngFor="let item of data, let i=index"  [label]= "item['itemLabel']" [title]="item['itemTitle']" [badgeLabel]="item['badgeLabel']"
+                           [badgeColor]="item['badgeColor']" badgeSlot="end">
+              </tamin-item>
+            <app-code class="relative" [htmlCode]="exampleFour" [tsCode]=""  (copyCode)="copy(exampleTwo)" ></app-code>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

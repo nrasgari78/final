@@ -1,0 +1,65 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button (click)="close()">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>انتخاب عنوان</ion-title>
+</ion-toolbar>
+<ion-toolbar>
+  <ion-searchbar [(ngModel)]="queryText" (ngModelChange)="mainData('', queryText)" animated
+                 placeholder="جستجو" [value]="searchParam"></ion-searchbar>
+</ion-toolbar>
+<ion-content *ngIf="!multiSelect">
+  <div class="content">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size-lg="12" size-md="12" size-xs="12" size="12">
+          <ion-radio-group value="{{valueEdite}}">
+            <ion-item (click)="select(item)" *ngFor="let item of dataList; let i=index;">
+              <ion-label *ngIf="item">{{ item.description }}</ion-label>
+              <ion-radio slot="start" value="{{ item.code }}" ></ion-radio>
+            </ion-item>
+            <tamin-pagination [visibleRangeLength]="3" [offset]="offset" [limit]="10" [size]="total_list"
+                              (changePage)="mainData($event, queryText)"></tamin-pagination>
+          </ion-radio-group>
+          <h6 class="ion-text-center ion-margin ion-padding" *ngIf="dataList.length == 0">
+            عنوان مورد نظر را از طریق فیلد بالا جستجو نمائید.
+          </h6>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<ion-content *ngIf="multiSelect">
+  <div class="content">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size-lg="12" size-md="12" size-xs="12" size="12">
+          <ion-item  *ngFor="let item of dataList; let i=index;">
+            <ion-label *ngIf="item">{{ item.description }}</ion-label>
+            <ion-checkbox slot="start" [checked]="checkedMulti(item.code)"  [value]="item.code" (ionChange)="selectChekbox($event)"></ion-checkbox>
+          </ion-item>
+          <tamin-pagination [visibleRangeLength]="3" [offset]="offset" [limit]="10" [size]="total_list"
+                            (changePage)="mainData($event, queryText)"></tamin-pagination>
+          <ion-button color="primary" expand="block" (click)="confirm()" [disabled]="confirmChek">ثبت</ion-button>
+          <h6 class="ion-text-center ion-margin ion-padding" *ngIf="dataList.length == 0">
+            عنوان مورد نظر را از طریق فیلد بالا جستجو نمائید.
+          </h6>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+

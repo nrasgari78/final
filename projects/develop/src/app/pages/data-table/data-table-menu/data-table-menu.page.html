@@ -1,0 +1,40 @@
+<ion-list *ngIf="!!data">
+  <ion-item [button]="true" [detail]="false" (click)="openSearchModal()" *ngIf="data.searchableTable">
+    <ion-icon color="medium" name="search-outline" slot="end"></ion-icon>
+    <ion-label>جستجو</ion-label>
+  </ion-item>
+
+  <ion-item [button]="true" [detail]="false" *ngIf="data.csvFile" (click)="download(data.csvFile)">
+    <ion-icon color="medium" name="download-outline" slot="end"></ion-icon>
+    <ion-label>ذخیره فایل</ion-label>
+  </ion-item>
+
+
+  <ion-item [button]="true" [detail]="false" (click)="openChart()" *ngIf="data.chart.data?.length">
+    <ion-icon color="medium" name="bar-chart-outline" slot="end"></ion-icon>
+    <ion-label>نمودار</ion-label>
+  </ion-item>
+
+
+  <ion-item [button]="true" [detail]="false"  (click)="openFaqModal()" *ngIf="data.faqDatas?.length">
+    <ion-icon color="medium" name="chatbubbles-outline" slot="end"></ion-icon>
+    <ion-label>پرسش و پاسخ</ion-label>
+  </ion-item>
+
+  <ion-item (click)="showServiceInfo()" [button]="true" [detail]="false" *ngIf="data.serviceInfo">
+    <ion-icon color="medium" name="information-circle-outline" slot="end"></ion-icon>
+    <ion-label>اطلاعات سرویس</ion-label>
+  </ion-item>
+
+
+  <ion-item [button]="true" [detail]="false" *ngIf="data.sortDatas?.length" (click)="openSortPopover($event)">
+    <ion-icon color="medium" name="swap-vertical-outline" slot="end"></ion-icon>
+    <ion-label>مرتب سازی</ion-label>
+  </ion-item>
+</ion-list>
+
+
+
+
+
+

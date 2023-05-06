@@ -1,0 +1,56 @@
+/* fallback */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url(../../../../assets/fonts/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsI.woff2) format('woff2');
+}
+
+.no-fill {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0
+}
+
+.fill {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0
+}
+.small{
+  font-size: 12px;
+}
+.medium{
+  font-size: 24px;
+
+}
+.large{
+  font-size: 32px;
+}
+.primary{
+  color: #3880ff;
+}
+.secondary{
+  color: #5260ff;
+}
+.tertiary{
+  color: #5260ff;
+}
+.success{
+  color: #2dd36f;
+}
+.warning{
+  color: #ffc409;
+}
+.danger{
+  color: #eb445a;
+}
+.light{
+  color: #f4f5f8;
+}
+
+span {
+  font-family: 'Material Symbols Outlined' !important;
+}

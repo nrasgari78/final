@@ -1,0 +1,25 @@
+<ng-container *ngIf="values && values.length" >
+  <ion-segment (ionChange)="changeSegments($event)" [value]="values[0]">
+    <ion-segment-button *ngFor="let value of values" [value]="value">
+      <ion-label>{{value}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ng-container>
+<ng-content></ng-content>
+
+
+<!--<tamin-segment (changeSegment)="changeSegment($event)" [values]="['cat&&Dogs', 'segment', 'default']">
+  <ng-container *segmentValue="!isHtml">
+    <ion-text>cat</ion-text>
+  </ng-container>
+  <ng-container *segmentValue="isHtml">
+    <ion-text>hello</ion-text>
+  </ng-container>
+</tamin-segment>-->
+
+
+<!--ts
+isHtml: boolean = true;
+changeSegment(event: any) {
+ this.isHtml = !this.isHtml&ndash;&gt;
+  }-->

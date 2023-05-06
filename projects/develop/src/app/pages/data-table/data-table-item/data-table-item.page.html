@@ -1,0 +1,57 @@
+  <ng-container *ngIf="col.value === displayCol">
+
+    <ng-container  *ngIf="type === 'input'" >
+      <ion-input class="custom" [disabled]="disabled"  [readonly]="readOnly" [value]="value" type="text"></ion-input>
+    </ng-container>
+
+    <ng-container  *ngIf="type === 'icon'" >
+      <ion-icon [color]="color" [name]="value" size="large"></ion-icon>
+    </ng-container>
+
+    <ng-container *ngIf="type === 'checkbox'" >
+      <ion-item color="transition" lines="none" class="custom-checkbox">
+        <ion-checkbox slot="start"></ion-checkbox>
+        <ion-label>{{value}}</ion-label>
+      </ion-item>
+    </ng-container>
+
+    <ng-container *ngIf="type === 'text'">
+      <ion-text [color]="color">
+        {{ value}}
+      </ion-text>
+    </ng-container>
+
+    <ng-container *ngIf="type === 'badge' && !!value">
+      <ion-badge slot="start" [color]="color">
+        {{value}}
+      </ion-badge>
+    </ng-container>
+
+    <ng-container *ngIf="type === 'popover'">
+      <ion-button class="ion-no-margin" fill="clear" (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" name="chatbubble-ellipses-outline"></ion-icon>
+      </ion-button>
+    </ng-container>
+
+    <ng-container *ngIf="type === 'action'">
+      <ion-chip class="ion-no-margin" outline [color]="actionColor" [disabled]="disabled" (click)="action.emit()">
+        <ion-icon [name]="actionIconName"></ion-icon>
+        <ion-label>{{actionLabel}}</ion-label>
+      </ion-chip>
+    </ng-container>
+
+    <div *ngIf="type === 'progress'">
+      <ion-text>%{{value}}</ion-text>
+      <ion-progress-bar [value]="calc(value)" [color]="color"></ion-progress-bar>
+
+    </div>
+
+    <ng-container *ngIf="type === 'date'">
+     {{getDate(value)}}
+    </ng-container>
+
+    <ng-container *ngIf="type === 'content'">
+      <ng-content></ng-content>
+    </ng-container>
+  </ng-container>
+

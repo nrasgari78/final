@@ -1,0 +1,10 @@
+<ion-chip *ngIf="label" [dir]="dir" [disabled]="disabled" [outline]="outline" [color]="color">
+  <ion-icon *ngIf="iconName" [name]="iconName"></ion-icon>
+  <ion-label>{{label}}</ion-label>
+  <ion-avatar *ngIf="avatarSrc">
+    <img [src]="avatarSrc" [alt]="avatarAlt"/>
+  </ion-avatar>
+</ion-chip>
+
+
+<!--<tamin-chip iconName="close-circle" color="primary" dir="ltr" [disabled]="false" [outline]="true" label="apps" avatarAlt=""   avatarSrc="https://ionicframework.com/docs/img/demos/avatar.svg"></tamin-chip>-->

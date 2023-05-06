@@ -1,0 +1,25 @@
+    <ul class="flex">
+      <li class="page-item" (click)="selectPage(currentPage - 1, $event)"  [class.disabled]="currentPage == 1">
+        <a class="page-link" href="" title="نمایش صفحه قبل">❮</a>
+      </li>
+
+      <li class="disabled page-item" (click)="cancelEvent($event)" *ngIf="(currentPage - range) > 1">
+        <a class="page-link" href="">...</a>
+      </li>
+
+      <li class="page-item" [class.active]="page == currentPage" *ngFor="let page of pages | async">
+        <a class="page-link" href="javascript:void(0)" (click)="selectPage(page, $event)">
+          {{page}}
+        </a>
+      </li>
+
+      <li class="disabled page-item" (click)="cancelEvent($event)" *ngIf="(currentPage + range) < totalPages">
+        <a class="page-link" href="" >...</a>
+      </li>
+
+      <li class="page-item" (click)="selectPage(currentPage + 1, $event)" [class.disabled]="currentPage == totalPages">
+        <a class="page-link"  href="" title="نمایش صفحه بعد">❯</a>
+      </li>
+    </ul>
+  
+

@@ -1,0 +1,13 @@
+<ion-accordion [disabled]="disabled" [value]="value" #accordion>
+  <ion-item [color]="color" slot="header">
+    <div class="circle">{{order}}</div>
+    <ion-label class="padding">{{header}}</ion-label>
+  </ion-item>
+  <div>
+    <ng-content></ng-content>
+  </div>
+</ion-accordion>
+
+
+
+
